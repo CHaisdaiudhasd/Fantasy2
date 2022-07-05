@@ -1,0 +1,57 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Ilikehotbabes", "BloodTheme")
+
+local Main = Window:NewTab("Main")
+local MainSection = Main:NewSection("Main")
+
+--Main
+MainSection:NewButton("Auto Clicker", "Clicks Fast", function()
+getgenv().farmer = true;
+
+while wait() do
+ if getgenv() .farmer == true then
+ game:service'ReplicatedStorage'.RemoteEvents.Click:FireServer("Click");
+
+         end
+     end
+end)
+
+MainSection:NewButton("Auto Egg", "Auto Hatch egg", function()
+getgenv().farmer = true;
+
+while wait(5) do
+if getgenv() .farmer == true then
+  game:service'ReplicatedStorage'.RemoteEvents.HatchEgg:FireServer("1");
+ end
+end
+end)
+           
+           
+ MainSection:NewButton("Stop Auto Egg", "Stops Auto Hatch egg", function()
+ getgenv().farmer = false;
+
+ while wait() do
+ if getgenv() .farmer == false then
+    game:service'ReplicatedStorage'.RemoteEvents.HatchEgg:FireServer();
+       end
+   end
+end)
+                
+                --Player
+local Main = Window:NewTab("Player")
+local PlayerSection = Main:NewSection("Player")
+
+
+PlayerSection:NewSlider("Walkspeed", "Makes You Walk Faster", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+PlayerSection:NewSlider("JumpPower", "Jump High", 500, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+PlayerSection:NewButton("Admin Script", "Gives Admin Commands", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+end)
+PlayerSection:NewButton("Anti AFK Script", "Anti Kick", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KazeOnTop/Rice-Anti-Afk/main/Wind", true))()
+end)
